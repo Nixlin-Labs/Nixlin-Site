@@ -1,47 +1,60 @@
 'use client';
 
+import AskAnythingButton from './AskAnythingButton';
+
 export default function Hero({ onOpenAskRail, onFocusContact }) {
   return (
-    <section className="relative z-10 w-full pt-12 pb-16 md:pt-20 md:pb-24 px-6 sm:px-10 md:px-14 lg:px-20 max-w-7xl mx-auto flex flex-col justify-center">
-      {/* Editorial Category Pill / Technical Monospace Meta */}
-      <div className="flex items-center gap-3 mb-6 sm:mb-8">
-        <span className="h-px w-6 bg-accent/60" />
-        <span className="font-mono-meta text-xs uppercase tracking-[0.2em] text-accent font-medium">
-          Web · Apps · SEO
-        </span>
-      </div>
-
-      {/* Main Headline with Editorial Serif Emphasis */}
-      <div className="max-w-4xl">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-primary font-normal leading-[1.08] sm:leading-[1.04]">
-          <span>Ideas,</span>
-          <br />
-          <span className="text-secondary/90 font-light">built into </span>
-          <span className="font-display italic text-accent font-normal decoration-accent/30 underline-offset-8">
-            momentum.
-          </span>
-        </h1>
-      </div>
-
-      {/* Supporting Editorial Paragraph and Services Summary */}
-      <div className="mt-8 sm:mt-12 max-w-2xl">
-        <p className="text-base sm:text-lg md:text-xl text-secondary leading-relaxed font-light">
-          Nixlin builds practical websites, applications and digital growth solutions for freelancers, teams and businesses ready to move forward.
-        </p>
-
-        {/* Studio Capabilities Overview */}
-        <div className="mt-10 pt-8 border-t border-border/40 grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono-meta text-xs">
-          <div className="flex flex-col gap-1.5">
-            <span className="text-accent/90 font-semibold uppercase tracking-wider">01 / Web</span>
-            <span className="text-secondary/80 leading-normal">Fast, bespoke websites & landing experiences.</span>
+    <section className="hero-section relative z-10 flex min-h-[calc(100svh-5rem)] w-full items-center px-6 py-16 sm:px-10 sm:py-20 md:px-14 lg:px-20">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(15rem,0.7fr)] lg:gap-16">
+        <div className="hero-copy relative">
+          <div className="mb-7 flex items-center gap-3 sm:mb-9">
+            <span className="h-px w-7 bg-accent/65" aria-hidden="true" />
+            <span className="text-[10px] font-mono-meta tracking-[0.12em] text-secondary/75 sm:text-[11px]">
+              WEB · APPS · SEO
+            </span>
           </div>
-          <div className="flex flex-col gap-1.5">
-            <span className="text-accent/90 font-semibold uppercase tracking-wider">02 / Apps</span>
-            <span className="text-secondary/80 leading-normal">Tailored digital products & web applications.</span>
+
+          <h1 className="max-w-[11ch] text-[clamp(3.4rem,7.2vw,6.9rem)] font-normal leading-[0.99] tracking-[-0.055em] text-primary">
+            Ideas,
+            <br />
+            built into
+            <br />
+            <span className="font-display italic tracking-[-0.035em] text-accent">momentum.</span>
+          </h1>
+
+          <p className="mt-7 max-w-[34rem] text-[15px] font-light leading-[1.8] text-secondary/85 sm:mt-8 sm:text-base md:text-[17px]">
+            Nixlin builds practical websites, applications and digital growth solutions for
+            freelancers, teams and businesses ready to move forward.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 sm:mt-10">
+            <button
+              type="button"
+              onClick={onFocusContact}
+              className="group inline-flex min-h-12 items-center gap-5 border-b border-accent/70 pb-1 text-sm font-medium text-primary transition-colors hover:text-accent focus-visible:outline-offset-4"
+            >
+              Start a project
+              <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
+            </button>
+            <AskAnythingButton onClick={onOpenAskRail} showShortcut />
           </div>
-          <div className="flex flex-col gap-1.5">
-            <span className="text-accent/90 font-semibold uppercase tracking-wider">03 / SEO</span>
-            <span className="text-secondary/80 leading-normal">Organic search visibility & discoverability.</span>
+        </div>
+
+        <div className="hero-services lg:justify-self-end lg:pb-3">
+          <h2 className="mb-5 font-mono-meta text-[10px] tracking-[0.12em] text-secondary/70">CAPABILITIES</h2>
+          <div id="services" className="border-t border-border/35">
+            {[
+              ['01', 'Web', 'Bespoke websites & landing experiences.'],
+              ['02', 'Apps', 'Tailored digital products & web applications.'],
+              ['03', 'SEO', 'Organic search visibility & discoverability.'],
+              ['04', 'Marketing', 'Driving attention with targeted strategies.'],
+            ].map(([number, title, description]) => (
+              <div key={title} className="service-line grid grid-cols-[2.25rem_4.2rem_minmax(0,1fr)] items-baseline gap-2 border-b border-border/25 py-4 sm:gap-3">
+                <span className="font-mono-meta text-[10px] text-accent/70">{number}</span>
+                <h2 className="text-sm font-medium text-primary">{title}</h2>
+                <p className="text-[12px] leading-relaxed text-secondary/70 sm:text-[13px]">{description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>

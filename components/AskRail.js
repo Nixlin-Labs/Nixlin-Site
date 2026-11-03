@@ -120,15 +120,15 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
       />
 
       {/* Sliding Rail Panel */}
-      <div className="relative z-10 w-full md:w-[480px] lg:w-[500px] h-full bg-[#04241D] border-l border-border/40 shadow-2xl flex flex-col justify-between overflow-hidden animate-slideLeft">
+      <div className="relative z-10 w-full md:w-[480px] lg:w-[500px] h-full bg-[#04241D] border-l border-border/30 shadow-2xl flex flex-col justify-between overflow-hidden animate-slideLeft">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-border/30 bg-[#021B16]/60">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-border/25 bg-[#021B16]/70">
           <div className="flex items-center gap-2.5">
-            <Logo className="w-6 h-6" />
+            <Logo className="w-5 h-5" />
             <h2 id="ask-rail-title" className="font-bold text-sm text-primary tracking-wide">
               Ask Nixlin
             </h2>
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono-meta bg-surface text-accent-muted border border-border/30">
+            <span className="px-2 py-0.5 rounded text-[10px] font-sans bg-surface/70 text-accent-muted border border-border/20">
               Assistant
             </span>
           </div>
@@ -137,12 +137,12 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
             type="button"
             onClick={onClose}
             aria-label="Close assistant panel"
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface/60 hover:bg-surface border border-border/40 hover:border-accent/40 text-[11px] font-mono-meta text-secondary hover:text-primary transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface/60 hover:bg-surface border border-border/30 hover:border-accent/40 text-[11px] font-sans text-secondary hover:text-primary transition-colors cursor-pointer"
           >
             <span>Close</span>
-            <span className="text-[9px] px-1 py-0.2 rounded bg-background-deep text-secondary/70">
+            <kbd className="text-[9px] px-1 py-0.2 rounded bg-background-deep text-secondary/60 font-mono">
               ESC
-            </span>
+            </kbd>
           </button>
         </div>
 
@@ -156,7 +156,7 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
               }`}
             >
               {/* Sender Label */}
-              <span className="font-mono-meta text-[11px] uppercase tracking-wider text-secondary/60">
+              <span className="font-sans text-[11px] uppercase tracking-wider text-secondary/50">
                 {msg.sender === 'user' ? 'You' : 'Nixlin'}
               </span>
 
@@ -165,18 +165,18 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
                 className={`max-w-[90%] rounded-lg p-4 text-sm leading-relaxed ${
                   msg.sender === 'user'
                     ? 'bg-accent text-background-deep font-medium'
-                    : 'bg-surface/80 border border-border/40 text-primary font-light'
+                    : 'bg-surface/70 border border-border/30 text-primary font-light'
                 }`}
               >
                 <p className="whitespace-pre-line">{msg.text}</p>
 
                 {/* Fallback Contact Action Button if no match */}
                 {msg.sender === 'nixlin' && msg.matched === false && (
-                  <div className="mt-3 pt-3 border-t border-border/30">
+                  <div className="mt-3 pt-3 border-t border-border/25">
                     <button
                       type="button"
                       onClick={handleContactAction}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-accent/15 hover:bg-accent/25 border border-accent/40 text-xs font-mono-meta text-accent transition-colors cursor-pointer"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded bg-accent/15 hover:bg-accent/25 border border-accent/40 text-xs font-mono text-accent transition-colors cursor-pointer"
                     >
                       <span>Contact Nixlin</span>
                       <span>→</span>
@@ -190,10 +190,10 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
           {/* Typing Indicator */}
           {isLoading && (
             <div className="flex flex-col items-start gap-1.5">
-              <span className="font-mono-meta text-[11px] uppercase tracking-wider text-secondary/60">
+              <span className="font-sans text-[11px] uppercase tracking-wider text-secondary/50">
                 Nixlin
               </span>
-              <div className="bg-surface/80 border border-border/40 rounded-lg p-4 flex items-center gap-1.5">
+              <div className="bg-surface/70 border border-border/30 rounded-lg p-4 flex items-center gap-1.5">
                 <span className="w-2 h-2 rounded-full bg-accent/60 animate-bounce" />
                 <span className="w-2 h-2 rounded-full bg-accent/60 animate-bounce [animation-delay:0.2s]" />
                 <span className="w-2 h-2 rounded-full bg-accent/60 animate-bounce [animation-delay:0.4s]" />
@@ -201,10 +201,10 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
             </div>
           )}
 
-          {/* Initial Suggested Questions Pills (shown only on start) */}
+          {/* Initial Suggested Questions Pills */}
           {messages.length === 1 && (
             <div className="pt-4 border-t border-border/20 flex flex-col gap-2">
-              <span className="font-mono-meta text-[10px] uppercase tracking-wider text-secondary/50">
+              <span className="font-sans text-[10px] uppercase tracking-wider text-secondary/50">
                 Suggested questions:
               </span>
               <div className="flex flex-wrap gap-2">
@@ -218,7 +218,7 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
                     key={idx}
                     type="button"
                     onClick={() => handleSend(suggested)}
-                    className="text-xs font-mono-meta text-left px-3 py-1.5 rounded-full bg-surface/50 hover:bg-surface border border-border/30 hover:border-accent/40 text-secondary hover:text-primary transition-colors cursor-pointer"
+                    className="text-xs font-sans text-left px-3 py-1.5 rounded-full bg-surface/50 hover:bg-surface border border-border/30 hover:border-accent/40 text-secondary hover:text-primary transition-colors cursor-pointer"
                   >
                     {suggested}
                   </button>
@@ -236,10 +236,10 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
             e.preventDefault();
             handleSend();
           }}
-          className="p-4 border-t border-border/30 bg-[#021B16]/80 flex items-center gap-2"
+          className="p-4 border-t border-border/25 bg-[#021B16]/80 flex items-center gap-2"
         >
           <div className="relative flex-1">
-            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono text-secondary/50 text-xs">
+            <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono text-secondary/40 text-xs">
               /
             </span>
             <input
@@ -249,7 +249,7 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
               onChange={(e) => setInputQuery(e.target.value)}
               placeholder="Ask anything about Nixlin..."
               disabled={isLoading}
-              className="w-full pl-8 pr-4 py-3 rounded-md bg-surface/90 border border-border text-sm text-primary placeholder:text-secondary/40 focus:border-accent focus:bg-surface focus:outline-none transition-colors"
+              className="w-full pl-8 pr-4 py-3 rounded-md bg-surface/80 border border-border/50 text-sm text-primary placeholder:text-secondary/40 focus:border-accent focus:bg-surface focus:outline-none transition-colors"
             />
           </div>
 

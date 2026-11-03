@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import Background from '../components/Background';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
+import TransformationSection from '../components/TransformationSection';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import AskRail from '../components/AskRail';
@@ -41,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-accent selection:text-background-deep">
-      {/* Dynamic Background System */}
+      {/* Dynamic Cosmic Universe Background System */}
       <Background />
 
       {/* Main Page Content */}
@@ -52,6 +53,10 @@ export default function Home() {
           <Hero
             onOpenAskRail={() => setIsAskRailOpen(true)}
             onFocusContact={handleFocusContact}
+          />
+          <TransformationSection
+            onFocusContact={handleFocusContact}
+            onOpenAskRail={() => setIsAskRailOpen(true)}
           />
           <ContactForm inputRef={contactInputRef} />
         </main>
