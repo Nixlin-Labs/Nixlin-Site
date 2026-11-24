@@ -139,7 +139,7 @@ export default function UniverseCanvas({ onStateChange }) {
     >
       {/* Graceful Fallback if WebGL is unavailable */}
       {!hasWebGL && (
-        <div className="absolute inset-0 bg-[#021B16] pointer-events-none">
+        <div className="absolute inset-0 bg-background-deep pointer-events-none">
           <div className="cosmic-atmosphere absolute inset-0" />
         </div>
       )}
@@ -155,9 +155,9 @@ export default function UniverseCanvas({ onStateChange }) {
           aria-label="[DEV] Universe Visual State Controller"
           className="fixed bottom-4 left-6 z-20 pointer-events-auto select-none"
         >
-          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#021B16]/90 backdrop-blur-md border border-[#7ED957]/30 shadow-xl">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#7ED957] animate-pulse" />
-            <span className="font-mono text-[9px] uppercase tracking-widest text-[#7ED957]/60 mr-1">
+          <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-background-deep/90 backdrop-blur-md border border-accent/30 shadow-xl">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+            <span className="font-mono text-[9px] uppercase tracking-widest text-accent/60 mr-1">
               DEV
             </span>
             {DEV_STATES.map((s) => {
@@ -171,8 +171,8 @@ export default function UniverseCanvas({ onStateChange }) {
                   aria-pressed={isActive}
                   className={`px-2 py-0.5 rounded text-[9px] font-mono tracking-wide uppercase transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-[#7ED957] text-[#021B16] font-bold'
-                      : 'text-[#9CB9AC]/60 hover:text-[#9CB9AC] border border-[#9CB9AC]/20'
+                      ? 'bg-accent text-background-deep font-bold'
+                      : 'text-secondary/60 hover:text-secondary border border-secondary/20'
                   }`}
                 >
                   {s.label}
@@ -183,7 +183,7 @@ export default function UniverseCanvas({ onStateChange }) {
               type="button"
               onClick={toggleReducedMotion}
               aria-label={isReducedMotion ? 'Dev: Enable full motion' : 'Dev: Reduce motion'}
-              className="ml-1 px-2 py-0.5 rounded text-[9px] font-mono border border-[#9CB9AC]/20 text-[#9CB9AC]/60 hover:text-[#9CB9AC] cursor-pointer transition-colors"
+              className="ml-1 px-2 py-0.5 rounded text-[9px] font-mono border border-secondary/20 text-secondary/60 hover:text-secondary cursor-pointer transition-colors"
             >
               {isReducedMotion ? 'Motion: Off' : 'Motion: On'}
             </button>

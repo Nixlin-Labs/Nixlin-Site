@@ -8,8 +8,8 @@ export default function Background({ onUniverseStateChange }) {
       className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
       aria-hidden="true"
     >
-      {/* Deep emerald atmosphere keeps the content readable while the field moves. */}
-      <div className="absolute inset-0 bg-[#021B16]" />
+      {/* Near-black brand atmosphere keeps the content readable while the field moves. */}
+      <div className="absolute inset-0 bg-background-deep" />
       <div className="cosmic-atmosphere absolute inset-0" />
 
       {/* 2. WebGL Cosmic Universe Engine */}

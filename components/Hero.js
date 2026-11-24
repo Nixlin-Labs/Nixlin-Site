@@ -1,6 +1,7 @@
 'use client';
 
 import AskAnythingButton from './AskAnythingButton';
+import PrimaryActionButton from './PrimaryActionButton';
 
 export default function Hero({ onOpenAskRail, onFocusContact }) {
   return (
@@ -22,20 +23,13 @@ export default function Hero({ onOpenAskRail, onFocusContact }) {
             <span className="font-display italic tracking-[-0.035em] text-accent">momentum.</span>
           </h1>
 
-          <p className="mt-7 max-w-[34rem] text-[15px] font-light leading-[1.8] text-secondary/85 sm:mt-8 sm:text-base md:text-[17px]">
+          <p className="mt-7 max-w-34rem text-[15px] font-light leading-[1.8] text-secondary/85 sm:mt-8 sm:text-base md:text-[17px]">
             Nixlin builds practical websites, applications and digital growth solutions for
             freelancers, teams and businesses ready to move forward.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4 sm:mt-10">
-            <button
-              type="button"
-              onClick={onFocusContact}
-              className="group inline-flex min-h-12 items-center gap-5 border-b border-accent/70 pb-1 text-sm font-medium text-primary transition-colors hover:text-accent focus-visible:outline-offset-4"
-            >
-              Start a project
-              <span className="text-accent transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
-            </button>
+            <PrimaryActionButton onClick={onFocusContact} />
             <AskAnythingButton onClick={onOpenAskRail} showShortcut />
           </div>
         </div>

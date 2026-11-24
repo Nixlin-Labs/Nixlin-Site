@@ -10,16 +10,12 @@ export default function Header({ onOpenAskRail }) {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between sm:h-[4.5rem] md:h-20">
 
         {/* Left: Brand Identity */}
-        <div className="flex items-center gap-3">
-          <div className="flex-shrink-0 flex items-center justify-center">
-            <Logo className="w-7 h-7" priority={true} />
-          </div>
-          <div className="flex flex-col leading-none gap-0.5">
-            <span className="font-bold text-base tracking-[0.12em] text-primary">NIXLIN</span>
-            <span className="text-[10px] text-secondary/60 font-sans hidden sm:block">
-              Software products &amp; services
-            </span>
-          </div>
+        <div className="flex items-center">
+          <Logo
+            className="h-11 w-36 sm:h-12 sm:w-40 md:w-44"
+            imageClassName="object-cover object-center"
+            priority={true}
+          />
         </div>
 
         <div className="flex items-center gap-5 sm:gap-8">

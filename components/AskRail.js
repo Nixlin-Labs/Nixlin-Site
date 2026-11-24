@@ -120,11 +120,11 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
       />
 
       {/* Sliding Rail Panel */}
-      <div className="relative z-10 w-full md:w-[480px] lg:w-[500px] h-full bg-[#04241D] border-l border-border/30 shadow-2xl flex flex-col justify-between overflow-hidden animate-slideLeft">
+      <div className="relative z-10 w-full md:w-[480px] lg:w-[500px] h-full bg-surface border-l border-border/30 shadow-2xl flex flex-col justify-between overflow-hidden animate-slideLeft">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-border/25 bg-[#021B16]/70">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-border/25 bg-background-deep/70">
           <div className="flex items-center gap-2.5">
-            <Logo className="w-5 h-5" />
+            <Logo className="h-6 w-16" />
             <h2 id="ask-rail-title" className="font-bold text-sm text-primary tracking-wide">
               Ask Nixlin
             </h2>
@@ -236,7 +236,7 @@ export default function AskRail({ isOpen, onClose, onFocusContact }) {
             e.preventDefault();
             handleSend();
           }}
-          className="p-4 border-t border-border/25 bg-[#021B16]/80 flex items-center gap-2"
+          className="p-4 border-t border-border/25 bg-background-deep/80 flex items-center gap-2"
         >
           <div className="relative flex-1">
             <span className="absolute left-3.5 top-1/2 -translate-y-1/2 font-mono text-secondary/40 text-xs">

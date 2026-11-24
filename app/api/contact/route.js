@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Contact from '@/models/Contact';
-import { validateEmail, isHoneypotTriggered } from '@/lib/validation';
+import { validateContactSubmission, isHoneypotTriggered } from '@/lib/validation';
 import { sendInquiryNotification, sendVisitorConfirmation } from '@/lib/mailer';
 
 export const dynamic = 'force-dynamic';
@@ -19,9 +19,8 @@ export async function POST(request) {
       });
     }
 
-    // 2. Validate email
-    const { email } = body || {};
-    const validation = validateEmail(email);
+    // 2. Validate and normalize the complete enquiry
+    const validation = validateContactSubmission(body);
 
     if (!validation.isValid) {
       return NextResponse.json(
@@ -33,14 +32,12 @@ export async function POST(request) {
       );
     }
 
+    const enquiry = validation.data;
+
     // 3. Connect to MongoDB & save contact
     try {
       await connectToDatabase();
-      await Contact.create({
-        email: validation.email,
-        status: 'new',
-        source: 'website',
-      });
+      await Contact.create({ ...enquiry, status: 'new', source: 'website' });
     } catch (dbError) {
       console.error('Failed to store contact in MongoDB:', dbError.message);
     }
@@ -48,8 +45,8 @@ export async function POST(request) {
     // 4. Send notification and auto-reply emails
     try {
       await Promise.allSettled([
-        sendInquiryNotification(validation.email),
-        sendVisitorConfirmation(validation.email),
+        sendInquiryNotification(enquiry),
+        sendVisitorConfirmation(enquiry),
       ]);
     } catch (mailError) {
       console.error('Mail dispatch error:', mailError.message);

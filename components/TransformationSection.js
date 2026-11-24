@@ -1,6 +1,7 @@
 'use client';
 
 import AskAnythingButton from './AskAnythingButton';
+import PrimaryActionButton from './PrimaryActionButton';
 
 export default function TransformationSection({ onFocusContact, onOpenAskRail }) {
   return (
@@ -32,14 +33,7 @@ export default function TransformationSection({ onFocusContact, onOpenAskRail })
           </p>
 
           <div className="flex flex-wrap items-center gap-4 pt-1">
-            <button
-              type="button"
-              onClick={onFocusContact}
-              className="inline-flex min-h-11 items-center gap-2 rounded-md bg-accent px-4 py-2.5 text-sm font-medium text-background-deep transition-colors hover:bg-accent/90 focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background-deep"
-            >
-              Plan your launch
-              <span aria-hidden="true">→</span>
-            </button>
+            <PrimaryActionButton onClick={onFocusContact} />
             <AskAnythingButton onClick={onOpenAskRail} />
           </div>
         </div>

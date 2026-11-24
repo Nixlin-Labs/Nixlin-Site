@@ -1,6 +1,6 @@
 const { connectToDatabase } = require('../lib/mongodb');
 const Contact = require('../models/Contact');
-const { validateEmail, isHoneypotTriggered } = require('../lib/validation');
+const { validateContactSubmission, isHoneypotTriggered } = require('../lib/validation');
 const { sendInquiryNotification, sendVisitorConfirmation } = require('../lib/mailer');
 
 async function handleContactSubmission(req, res, next) {
@@ -15,9 +15,8 @@ async function handleContactSubmission(req, res, next) {
       });
     }
 
-    // 2. Validate email
-    const { email } = req.body || {};
-    const validation = validateEmail(email);
+    // 2. Validate and normalize the complete enquiry
+    const validation = validateContactSubmission(req.body);
 
     if (!validation.isValid) {
       return res.status(400).json({
@@ -26,14 +25,12 @@ async function handleContactSubmission(req, res, next) {
       });
     }
 
+    const enquiry = validation.data;
+
     // 3. Connect to MongoDB & save contact
     try {
       await connectToDatabase();
-      await Contact.create({
-        email: validation.email,
-        status: 'new',
-        source: 'website',
-      });
+      await Contact.create({ ...enquiry, status: 'new', source: 'website' });
     } catch (dbError) {
       console.error('Failed to store contact in MongoDB:', dbError.message);
       // If DB error is not a duplicate key error, we still proceed or log
@@ -41,8 +38,8 @@ async function handleContactSubmission(req, res, next) {
 
     // 4. Send notification and auto-reply emails in the background
     Promise.allSettled([
-      sendInquiryNotification(validation.email),
-      sendVisitorConfirmation(validation.email),
+      sendInquiryNotification(enquiry),
+      sendVisitorConfirmation(enquiry),
     ]).then((results) => {
       results.forEach((result, idx) => {
         if (result.status === 'rejected') {

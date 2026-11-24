@@ -9,14 +9,11 @@ export default function Footer() {
     <footer className="relative z-10 w-full py-12 px-6 sm:px-10 md:px-14 lg:px-20 max-w-7xl mx-auto border-t border-border/20">
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         {/* Left: Brand & services */}
-        <div className="flex items-center gap-3">
-          <Logo className="w-6 h-6" />
-          <div className="flex flex-col leading-tight">
-            <span className="font-bold text-xs tracking-[0.12em] text-primary">NIXLIN</span>
-            <span className="text-[11px] text-secondary/60 font-sans">
-              Software products &amp; services
-            </span>
-          </div>
+        <div className="flex items-center">
+          <Logo
+            className="h-11 w-36 sm:h-12 sm:w-40 md:w-44"
+            imageClassName="object-cover object-center"
+          />
         </div>
 
         {/* Center: Direct Contact */}
