@@ -23,7 +23,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata = {
-  title: 'Nixlin — Ideas,built intomomentum.',
+  title: 'Nixlin — Ideas,built into momentum.',
   description: 'Nixlin builds websites, applications and digital growth solutions for freelancers, teams and growing businesses.',
   keywords: ['software development', 'web development', 'application development', 'SEO', 'Nixlin', 'digital products'],
   authors: [{ name: 'Nixlin' }],
