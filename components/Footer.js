@@ -16,14 +16,32 @@ export default function Footer() {
           />
         </div>
 
-        {/* Center: Direct Contact */}
-        <div className="text-[12px] font-sans text-secondary/60">
-          <span className="mr-2">Email:</span>
+        {/* Center: Contact and social links */}
+        <div className="flex items-center gap-2 text-[12px] font-sans text-secondary/60 sm:gap-3">
           <a
             href="mailto:nixlinlabs@gmail.com"
-            className="text-primary/90 hover:text-accent underline decoration-border/40 hover:decoration-accent/60 transition-colors"
+            className="group inline-flex items-center gap-2 rounded-full text-primary/90 transition-colors hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
           >
-            nixlinlabs@gmail.com
+            <span className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-border/40 transition-colors group-hover:border-accent/60">
+              <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="3" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+            </span>
+            {/* <span>nixlinlabs@gmail.com</span> */}
+          </a>
+          <a
+            href="https://www.instagram.com/nixlinlabs/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Nixlin Labs on Instagram (opens in a new tab)"
+            className="inline-flex size-11 shrink-0 items-center justify-center rounded-full border border-border/40 text-primary/90 transition-colors hover:border-accent/60 hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <svg aria-hidden="true" className="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+            </svg>
           </a>
         </div>
 
